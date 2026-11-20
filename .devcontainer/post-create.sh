@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+sudo chmod -R 777 /usr/local/bundle
 
 if [ -f package.json ]; then
   bash -i -c "nvm install --lts && nvm install-latest-npm"
