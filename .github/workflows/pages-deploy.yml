@@ -25,6 +25,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      working-directory: ./_scripts
 
     steps:
       - name: Checkout
@@ -37,7 +39,7 @@ jobs:
 
       - name: Remove_underscores
         id: underscores
-        run: _scripts/remove_underscores.sh
+        run: ./remove_underscores.sh
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
