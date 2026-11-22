@@ -34,7 +34,7 @@ for path in files:
     print(f"Renaming: {path} -> {new_path}")
     path.rename(new_path)
 
-## Update references in HTML files.
+# Update references in HTML files.
 for path in ROOT.rglob("*.html"):
     content = path.read_text(encoding="utf-8")
 
@@ -43,10 +43,10 @@ for path in ROOT.rglob("*.html"):
     for old_name, new_name in renames.items():
         content = content.replace(old_name, new_name)
 
-    # Convert legacy named anchors to HTML5 IDs.
+    # Convert legacy named anchors to HTML5 span elements.
     content = re.sub(
-        r'<a\s+name=(["\'])(.*?)\1',
-        r'<a id=\1\2\1',
+        r'<a\s+(?:name|id)=(["\'])(.*?)\1>(.*?)</a>',
+        r'<span id=\1\2\1>\3</span>',
         content,
         flags=re.IGNORECASE
     )
