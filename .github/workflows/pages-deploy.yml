@@ -34,15 +34,8 @@ jobs:
           # submodules: true
           # If using the 'assets' git submodule from Chirpy Starter, uncomment above
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
-
-      # Diagnostic
-      - name: Check repository files
-        run: |
-          pwd
-          ls -la
-          ls -la scripts/
       - name: Fix Family Historian HTML filenames
-        run: python3 scripts/fix-family-historian.py
+        run: python3 _scripts/fix-family-historian.py
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
