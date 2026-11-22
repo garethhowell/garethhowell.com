@@ -25,8 +25,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      working-directory: ./_scripts
 
     steps:
       - name: Checkout
@@ -37,9 +35,8 @@ jobs:
           # If using the 'assets' git submodule from Chirpy Starter, uncomment above
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
-      - name: Remove_underscores
-        id: underscores
-        run: ./remove_underscores.sh
+      - name: Fix Family Historian HTML filenames
+        run: python3 scripts/fix-family-historian.py
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6
